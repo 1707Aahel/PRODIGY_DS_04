@@ -1,0 +1,47 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Step 1: Manually input social media data (sample comments)
+data = {
+    'Comment': [
+        "I love the new features in the app!",
+        "Worst update ever. So many bugs.",
+        "The service is okay, nothing special.",
+        "Fantastic experience, highly recommended!",
+        "Very slow and keeps crashing.",
+        "Not bad, but could be improved.",
+        "Absolutely loved the UI!",
+        "I’m disappointed with the customer support.",
+        "It works fine for me.",
+        "Great performance and speed!"
+    ],
+    'Sentiment': [
+        'Positive',
+        'Negative',
+        'Neutral',
+        'Positive',
+        'Negative',
+        'Neutral',
+        'Positive',
+        'Negative',
+        'Neutral',
+        'Positive'
+    ]
+}
+
+# Step 2: Create DataFrame
+df = pd.DataFrame(data)
+
+# Step 3: Count sentiment labels
+sentiment_counts = df['Sentiment'].value_counts()
+
+# Step 4: Visualize with bar plot
+sns.set_style("whitegrid")
+plt.figure(figsize=(6, 4))
+sns.countplot(data=df, x='Sentiment', palette='Set2', order=['Positive', 'Neutral', 'Negative'])
+plt.title('Sentiment Analysis of Social Media Comments')
+plt.xlabel('Sentiment')
+plt.ylabel('Number of Comments')
+plt.tight_layout()
+plt.show()
